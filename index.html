@@ -5,1156 +5,574 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JNK Printing Hub</title>
     <!-- Bootstrap CSS -->
+     <link href="css/style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-color: #0d4a7e;
-            --secondary-color: #007bff;
-            --accent-color: #ffc107;
-            --light-color: #f8f9fa;
-            --dark-color: #212529;
-            --gray-color: #6c757d;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark-color);
-        }
-        
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .navbar-brand {
-            font-weight: 700;
-            color: var(--primary-color) !important;
-        }
-        
-        .nav-link {
-            font-weight: 500;
-            color: var(--gray-color) !important;
-            transition: color 0.3s;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary-color) !important;
-        }
-        
-        .hero-section {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 5rem 0;
-        }
-        
-        .hero-title {
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-        
-        .btn-primary {
-            background-color: var(--accent-color);
-            border-color: var(--accent-color);
-            color: var(--dark-color);
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            transition: all 0.3s;
-        }
-        
-        .btn-primary:hover {
-            background-color: #e0a800;
-            border-color: #e0a800;
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline-primary {
-            border-color: white;
-            color: white;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            transition: all 0.3s;
-        }
-        
-        .btn-outline-primary:hover {
-            background-color: white;
-            color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-        
-        .stats-container {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent-color);
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: white;
-        }
-        
-        .feature-image {
-            border-radius: 1rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .feature-badge {
-            position: absolute;
-            top: 1rem;
-            left: 1rem;
-            background-color: var(--accent-color);
-            color: var(--dark-color);
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .premium-badge {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            background-color: white;
-            color: var(--primary-color);
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-        }
-        
-        .made-in-bolt {
-            position: absolute;
-            bottom: 1rem;
-            right: 1rem;
-            background-color: var(--accent-color);
-            color: var(--dark-color);
-            padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
-            font-weight: 600;
-            transform: rotate(10deg);
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            color: var(--gray-color);
-        }
-        
-        .about-section {
-            background-color: var(--light-color);
-            padding: 5rem 0;
-        }
-        
-        .story-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .story-title {
-            color: var(--primary-color);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .feature-card {
-            background-color: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-        
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .feature-title {
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 1rem 0;
-        }
-        
-        .feature-list li {
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .feature-list li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--primary-color);
-        }
-        
-        .services-section {
-            padding: 5rem 0;
-        }
-        
-        .why-choose-section {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 5rem 0;
-        }
-        
-        .why-choose-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .why-choose-card {
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 1rem;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s;
-        }
-        
-        .why-choose-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .why-choose-icon {
-            width: 50px;
-            height: 50px;
-            background-color: var(--accent-color);
-            color: var(--dark-color);
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .why-choose-title {
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .guarantee-badge {
-            background-color: var(--accent-color);
-            color: var(--dark-color);
-            padding: 0.75rem 1.5rem;
-            border-radius: 2rem;
-            font-weight: 700;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 2rem;
-        }
-        
-        .testimonials-section {
-            padding: 5rem 0;
-            background-color: var(--light-color);
-        }
-        
-        .testimonial-card {
-            background-color: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-        
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .testimonial-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 1rem;
-        }
-        
-        .testimonial-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .testimonial-name {
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-        
-        .testimonial-role {
-            color: var(--gray-color);
-            font-size: 0.9rem;
-        }
-        
-        .stars {
-            color: var(--accent-color);
-            margin: 0.5rem 0;
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 0;
-        }
-        
-        .quote-icon {
-            font-size: 2rem;
-            color: #ddd;
-            opacity: 0.5;
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-        }
-        
-        .cta-section {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 5rem 0;
-            border-radius: 1rem;
-            margin: 3rem 0;
-        }
-        
-        .cta-title {
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .contact-section {
-            padding: 5rem 0;
-        }
-        
-        .contact-form {
-            background-color: white;
-            border-radius: 1rem;
-            padding: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        
-        .form-label {
-            font-weight: 600;
-        }
-        
-        .form-control {
-            border-radius: 0.5rem;
-            padding: 0.75rem 1rem;
-        }
-        
-        .btn-submit {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            color: white;
-            font-weight: 600;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            transition: all 0.3s;
-        }
-        
-        .btn-submit:hover {
-            background-color: #0b3d66;
-            border-color: #0b3d66;
-            transform: translateY(-2px);
-        }
-        
-        .contact-info {
-            margin-bottom: 2rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 1rem;
-            flex-shrink: 0;
-        }
-        
-        .contact-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        
-        .social-icon:hover {
-            background-color: var(--accent-color);
-            color: var(--dark-color);
-            transform: translateY(-2px);
-        }
-        
-        .map-container {
-            height: 200px;
-            border-radius: 1rem;
-            overflow: hidden;
-            margin-top: 1rem;
-        }
-        
-        .footer {
-            background-color: #121212;
-            color: white;
-            padding: 3rem 0;
-        }
-        
-        .footer-title {
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-links a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent-color);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid #333;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .footer-social a {
-            color: white;
-            text-decoration: none;
-        }
-        
-        .footer-social i {
-            width: 40px;
-            height: 40px;
-            background-color: #222;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        
-        .footer-social i:hover {
-            background-color: var(--accent-color);
-            color: var(--dark-color);
-        }
-        
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .stats-container {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .why-choose-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-form {
-                margin-top: 2rem;
-            }
-        }
-    </style>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container-fluid bg-light py-2">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-6">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-phone me-2"></i>
-                            <span>+91 96558 70027</span>
-                            <i class="fas fa-envelope ms-3 me-2"></i>
-                            <span>jnktraders27@gmail.com</span>
-                        </div>
+<body id="home" data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+<!-- Header -->
+<header>
+    <div class="container-fluid bg1 py-2 d-none d-md-block d-lg-block">
+        <div class="container">
+            <div class="row align-items-center roboto">
+                <div class="col-md-6 col-12">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-phone me-2"></i>
+                        <span>+91 96558 70027</span>
+                        <i class="fas fa-envelope ms-3 me-2"></i>
+                        <span>jnkprintinghub@gmail.com</span>
                     </div>
-                    <div class="col-md-6 text-md-end">
-                        <span>Open: Mon-Sat 9:00 AM - 7:00 PM</span>
-                    </div>
+                </div>
+                <div class="col-md-6 col-12 text-md-end">
+                    <span>Open: Mon-Sat 9:00 AM - 7:00 PM</span>
                 </div>
             </div>
         </div>
+    </div>
+</header>    
+<div class="sticky-top1">
+    <nav class="navbar navbar-expand-lg outfit" id="navbar-example2">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <img src="images/jnk.png" class="img-fluid new-logo" alt="JKN Printing HUB" title="JKN Printing HUB">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="bi bi-list text-white"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-center">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#whychoose">Why Choose Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonial">Testimonials</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Hero Section -->
+<section class="hero-section" id="home">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="hero-title outfit">Your One-Stop <span style="color: var(--accent-color);">Printing Solution</span></h1>
+                <p class="hero-subtitle roboto">From business cards to large format banners, we deliver exceptional quality printing services with fast turnaround times and competitive pricing.</p>
+                <div class="d-flex gap-3 outfit">
+                    <a href="#contact" class="btn btn-primary">Get a Quote <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+                <div class="stats-container outfit">
+                    <div class="stat-item">
+                        <div class="stat-number">1500+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3000+</div>
+                        <div class="stat-label">Projects Done</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-4 mt-lg-0">
+                <div class="position-relative">
+                    <img src="https://via.placeholder.com/600x400" alt="Printing Services" class="feature-image img-fluid">
+                    <div class="feature-badge">Fast Delivery</div>
+                    <div class="premium-badge">Premium Quality</div>
+                    <div class="made-in-bolt">Made in Bolt</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About Section -->
+<section class="about-section" id="about">
+    <div class="container">
+        <h2 class="section-title blue-clr outfit">About JNK Printing Hub</h2>
+        <p class="section-subtitle roboto">Established with a vision to provide top-quality printing solutions, we've grown to become a trusted partner for businesses and individuals across the region.</p>
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h3 class="story-title outfit">Our Story</h3>
+                <p class="roboto">Founded with a passion for excellence, JNK Printing Hub has been at the forefront of innovative printing solutions. We combine traditional craftsmanship with cutting-edge technology to deliver results that exceed expectations.</p>
+                <p class="roboto">Our mission is to help businesses make a lasting impression through superior print quality, personalized service, and competitive pricing. Every project, whether large or small, receives our full attention and expertise.</p>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h4 class="outfit">Quality Assured</h4>
+                        <p class="roboto">Quality check</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                        <h4 class="outfit">Quick Delivery</h4>
+                        <p class="roboto">Same day service</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-users"></i></div>
+                        <h4 class="outfit">Expert Team</h4>
+                        <p class="roboto">15+ professionals</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                        <h4 class="outfit">Customer First</h4>
+                        <p class="roboto">24/7 support</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 mt-4 mt-lg-0">
+                <img src="images/printing.jpg" alt="Our Team" class="img-fluid rounded w-75 mx-auto d-block" title="JNK Printing">    
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Section -->
+<section class="services-section" id="services">
+    <div class="container">
+        <h2 class="section-title outfit blue-clr">Our Services</h2>
+        <p class="section-subtitle roboto">Comprehensive printing solutions tailored to meet all your business and personal needs with exceptional quality and competitive pricing.</p>
         
-        <nav class="navbar navbar-expand-lg">
-            <div class="container">
-                <a class="navbar-brand" href="#">JNK Printing Hub</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Why Choose Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Testimonials</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                    </ul>
+        <div class="features-grid">
+            <div class="feature-card" style="background-color: #f0f7ff; border: 1px solid #cce5ff;">
+                <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+                <h4 class="feature-title outfit">Business Essentials</h4>
+                <p class="roboto">Professional business stationery and essential corporate materials for your company needs.</p>
+                <ul class="feature-list roboto">
+                    <li>Business Cards</li>
+                    <li>Letterheads & Envelopes</li>
+                    <li>Files & Conference pad</li>
+                    <li>ID card</li>
+                </ul>    
+            </div>
+            <div class="feature-card" style="background-color: #f0fff0; border: 1px solid #ccffcc;">
+                <div class="feature-icon"><i class="fas fa-bullhorn"></i></div>
+                <h4 class="feature-title outfit">Marketing Materials</h4>
+                <p class="roboto">High-quality marketing materials to promote your business and enhance brand visibility.</p>
+                <ul class="feature-list roboto">
+                    <li>Brochures & Flyers</li>
+                    <li>Posters & Banners</li>
+                    <li>Catalogues & Booklets</li>
+                    <li>Product Packaging</li>
+                </ul>
+            </div>
+            <div class="feature-card" style="background-color: #fff8f0; border: 1px solid #ffddcc;">
+                <div class="feature-icon"><i class="fas fa-gift"></i></div>
+                <h4 class="feature-title outfit">Corporate & Promotional Items</h4>
+                <p class="roboto">Custom corporate gifts and promotional materials to strengthen business relationships.</p>
+                <ul class="feature-list roboto">
+                    <li>All types of Calendar</li>
+                    <li>All types of Diary</li>
+                    <li>Branded Notebooks & Pens</li>
+                    <li>Corporate Gifts</li>
+                </ul>
+            </div>
+            <div class="feature-card" style="background-color: #f8f0ff; border: 1px solid #e6ccff;">
+                <div class="feature-icon"><i class="fas fa-school"></i></div>
+                <h4 class="feature-title outfit">School & College</h4>
+                <p class="roboto">Educational materials and supplies for schools, colleges, and academic institutions.</p>
+                <ul class="feature-list roboto">
+                    <li>Student Notebook</li>
+                    <li>School Magazines & Yearbooks</li>
+                    <li>Lamination Roll (Brownsheet)</li>
+                    <li>Exam Pad</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Why Choose Us Section -->
+<section class="why-choose-section" id="whychoose">
+    <div class="container">
+        <h2 class="section-title yellow-clr outfit">Why Choose JNK Printing Hub?</h2>
+        <p class="text-center roboto text-white">We're committed to delivering excellence in every aspect of our service, from initial consultation to final delivery.</p>
+        <div class="why-choose-grid">
+            <div class="why-choose-card">
+                <div class="why-choose-icon"><i class="fas fa-star"></i></div>
+                <h4 class="why-choose-title outfit">Premium Quality</h4>
+                <p>State-of-the-art equipment and premium materials ensure exceptional print quality every time.</p>
+            </div>
+            <div class="why-choose-card">
+                <div class="why-choose-icon"><i class="fas fa-dollar-sign"></i></div>
+                <h4 class="why-choose-title outfit">Affordable Pricing</h4>
+                <p class="roboto">Competitive rates without compromising on quality. Best value for your investment.</p>
+            </div>
+            <div class="why-choose-card">
+                <div class="why-choose-icon"><i class="fas fa-clock"></i></div>
+                <h4 class="why-choose-title outfit">Fast Delivery</h4>
+                <p class="roboto">Quick turnaround times with same-day service available for urgent orders.</p>
+            </div>
+            <div class="why-choose-card">
+                <div class="why-choose-icon"><i class="fas fa-cogs"></i></div>
+                <h4 class="why-choose-title outfit">Custom Solutions</h4>
+                <p class="roboto">Tailored printing solutions to meet your specific requirements and preferences.</p>
+            </div>
+            <div class="why-choose-card">
+                <div class="why-choose-icon"><i class="fas fa-box"></i></div>
+                <h4 class="why-choose-title outfit">Bulk & Small Orders</h4>
+                <p class="roboto">Whether you need 1 or 10,000 copies, we handle orders of all sizes efficiently.</p>
+            </div>
+            <div class="why-choose-card">
+                <div class="why-choose-icon"><i class="fas fa-smile"></i></div>
+                <h4 class="why-choose-title outfit">Friendly Service</h4>
+                <p class="roboto">Personal attention and support from our dedicated team throughout your project.</p>
+            </div>
+        </div>
+        <div class="text-center">
+            <div class="guarantee-badge outfit">
+                <i class="fas fa-check"></i> 100% Satisfaction Guaranteed
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Gallery Section -->
+<section class="gallery-section bg-white" id="gallery">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="section-title outfit blue-clr">Our Gallery</h2>
+            </div>
+        </div>
+    </div> 
+</section>
+<!-- Testimonials Section -->
+<section class="testimonials-section" id="testimonial">
+    <div class="container">
+        <h2 class="section-title outfit blue-clr">What Our Clients Say</h2>
+        <p class="section-subtitle roboto">Don't just take our word for it. Here's what our satisfied customers have to say about our services.</p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="images/client1.jpg" alt="Client">
+                        </div>
+                        <div>
+                            <div class="testimonial-name">Geetha Muthiah</div>
+                            <div class="testimonial-role">Director, Chettinad Hari Shree Vidyalayam</div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text roboto">"We recently ordered our school diaries from JNK Printing Hub. The printing quality was excellent, with clear text and vibrant colors. The finish was professional, and we are very satisfied with the overall outcome."</p>
                 </div>
             </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="hero-title">Your One-Stop <span style="color: var(--accent-color);">Printing Solution</span></h1>
-                    <p class="hero-subtitle">From business cards to large format banners, we deliver exceptional quality printing services with fast turnaround times and competitive pricing.</p>
-                    <div class="d-flex gap-3">
-                        <a href="#" class="btn btn-primary">Get a Quote <i class="fas fa-arrow-right ms-2"></i></a>
-                        <a href="#" class="btn btn-outline-primary">Learn More <i class="fas fa-download ms-2"></i></a>
-                    </div>
-                    
-                    <div class="stats-container">
-                        <div class="stat-item">
-                            <div class="stat-number">100+</div>
-                            <div class="stat-label">Happy Clients</div>
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="images/client2.jpg" alt="Client">
                         </div>
-                        <div class="stat-item">
-                            <div class="stat-number">1000+</div>
-                            <div class="stat-label">Projects Done</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">5+</div>
-                            <div class="stat-label">Years Experience</div>
+                        <div>
+                            <div class="testimonial-name">P Arunagiri</div>
+                            <div class="testimonial-role">Founder, Technicolab</div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
                         </div>
                     </div>
+                    <p class="testimonial-text roboto">"We got our product catalogues printed at JNK Printing Hub, and the quality was outstanding. The colors were vibrant, the paper felt premium, and the finishing was perfect. Our customers loved it!"</p>
                 </div>
-                <div class="col-lg-6 mt-4 mt-lg-0">
-                    <div class="position-relative">
-                        <img src="https://via.placeholder.com/600x400" alt="Printing Services" class="feature-image img-fluid">
-                        <div class="feature-badge">Fast Delivery</div>
-                        <div class="premium-badge">Premium Quality</div>
-                        <div class="made-in-bolt">Made in Bolt</div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="images/client3.jpg" alt="Client">
+                        </div>
+                        <div>
+                            <div class="testimonial-name">Amit Patel</div>
+                            <div class="testimonial-role">Owner, Patel Restaurants</div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
                     </div>
+                    <p class="testimonial-text roboto">"From menu cards to packaging, JNK Printing Hub handles all our printing needs. Consistent quality and competitive prices make them our go-to printing partner."</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial-card">
+                    <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="images/client4.jpg" alt="Client">
+                        </div>
+                        <div>
+                            <div class="testimonial-name">Dr. Sunita Mehta</div>
+                            <div class="testimonial-role">Clinic Owner</div>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text roboto">"Professional service and attention to detail. They created beautiful appointment cards and clinic brochures that perfectly represent our brand."</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="container">
-            <h2 class="section-title">About JNK Printing Hub</h2>
-            <p class="section-subtitle">Established with a vision to provide top-quality printing solutions, we've grown to become a trusted partner for businesses and individuals across the region.</p>
-            
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h3 class="story-title">Our Story</h3>
-                    <p>Founded with a passion for excellence, JNK Printing Hub has been at the forefront of innovative printing solutions. We combine traditional craftsmanship with cutting-edge technology to deliver results that exceed expectations.</p>
-                    <p>Our mission is to help businesses make a lasting impression through superior print quality, personalized service, and competitive pricing. Every project, whether large or small, receives our full attention and expertise.</p>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                            <h4>Quality Assured</h4>
-                            <p>Quality check</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-clock"></i></div>
-                            <h4>Quick Delivery</h4>
-                            <p>Same day service</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-users"></i></div>
-                            <h4>Expert Team</h4>
-                            <p>15+ professionals</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon"><i class="fas fa-heart"></i></div>
-                            <h4>Customer First</h4>
-                            <p>24/7 support</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 mt-4 mt-lg-0">
-                    <div class="position-relative">
-                        <img src="https://via.placeholder.com/600x400" alt="Our Team" class="img-fluid rounded">
-                        <div class="premium-badge" style="position: absolute; bottom: 20px; left: 20px;">5+ Years<br>of Excellence</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Comprehensive printing solutions tailored to meet all your business and personal needs with exceptional quality and competitive pricing.</p>
-            
-            <div class="features-grid">
-                <div class="feature-card" style="background-color: #f0f7ff; border: 1px solid #cce5ff;">
-                    <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
-                    <h4 class="feature-title">Business Essentials</h4>
-                    <p>Professional business stationery and essential corporate materials for your company needs.</p>
-                    <ul class="feature-list">
-                        <li>Business Cards</li>
-                        <li>Letterheads & Envelopes</li>
-                        <li>Files & Conference pad</li>
-                        <li>ID card</li>
-                    </ul>
-                    <a href="#" class="text-decoration-none">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
-                </div>
-                
-                <div class="feature-card" style="background-color: #f0fff0; border: 1px solid #ccffcc;">
-                    <div class="feature-icon"><i class="fas fa-bullhorn"></i></div>
-                    <h4 class="feature-title">Marketing Materials</h4>
-                    <p>High-quality marketing materials to promote your business and enhance brand visibility.</p>
-                    <ul class="feature-list">
-                        <li>Brochures & Flyers</li>
-                        <li>Posters & Banners</li>
-                        <li>Catalogues & Booklets</li>
-                        <li>Product Packaging</li>
-                    </ul>
-                    <a href="#" class="text-decoration-none">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
-                </div>
-                
-                <div class="feature-card" style="background-color: #fff8f0; border: 1px solid #ffddcc;">
-                    <div class="feature-icon"><i class="fas fa-gift"></i></div>
-                    <h4 class="feature-title">Corporate & Promotional Items</h4>
-                    <p>Custom corporate gifts and promotional materials to strengthen business relationships.</p>
-                    <ul class="feature-list">
-                        <li>All types of Calendar</li>
-                        <li>All types of Diary</li>
-                        <li>Branded Notebooks & Pens</li>
-                        <li>Corporate Gifts</li>
-                    </ul>
-                    <a href="#" class="text-decoration-none">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
-                </div>
-                
-                <div class="feature-card" style="background-color: #f8f0ff; border: 1px solid #e6ccff;">
-                    <div class="feature-icon"><i class="fas fa-school"></i></div>
-                    <h4 class="feature-title">School & College</h4>
-                    <p>Educational materials and supplies for schools, colleges, and academic institutions.</p>
-                    <ul class="feature-list">
-                        <li>Student Notebook</li>
-                        <li>School Magazines & Yearbooks</li>
-                        <li>Lamination Roll (Brownsheet)</li>
-                        <li>Exam Pad</li>
-                    </ul>
-                    <a href="#" class="text-decoration-none">Learn More <i class="fas fa-arrow-right ms-1"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us Section -->
-    <section class="why-choose-section">
-        <div class="container">
-            <h2 class="section-title">Why Choose JNK Printing Hub?</h2>
-            <p class="section-subtitle">We're committed to delivering excellence in every aspect of our service, from initial consultation to final delivery.</p>
-            
-            <div class="why-choose-grid">
-                <div class="why-choose-card">
-                    <div class="why-choose-icon"><i class="fas fa-star"></i></div>
-                    <h4 class="why-choose-title">Premium Quality</h4>
-                    <p>State-of-the-art equipment and premium materials ensure exceptional print quality every time.</p>
-                </div>
-                
-                <div class="why-choose-card">
-                    <div class="why-choose-icon"><i class="fas fa-dollar-sign"></i></div>
-                    <h4 class="why-choose-title">Affordable Pricing</h4>
-                    <p>Competitive rates without compromising on quality. Best value for your investment.</p>
-                </div>
-                
-                <div class="why-choose-card">
-                    <div class="why-choose-icon"><i class="fas fa-clock"></i></div>
-                    <h4 class="why-choose-title">Fast Delivery</h4>
-                    <p>Quick turnaround times with same-day service available for urgent orders.</p>
-                </div>
-                
-                <div class="why-choose-card">
-                    <div class="why-choose-icon"><i class="fas fa-cogs"></i></div>
-                    <h4 class="why-choose-title">Custom Solutions</h4>
-                    <p>Tailored printing solutions to meet your specific requirements and preferences.</p>
-                </div>
-                
-                <div class="why-choose-card">
-                    <div class="why-choose-icon"><i class="fas fa-box"></i></div>
-                    <h4 class="why-choose-title">Bulk & Small Orders</h4>
-                    <p>Whether you need 1 or 10,000 copies, we handle orders of all sizes efficiently.</p>
-                </div>
-                
-                <div class="why-choose-card">
-                    <div class="why-choose-icon"><i class="fas fa-smile"></i></div>
-                    <h4 class="why-choose-title">Friendly Service</h4>
-                    <p>Personal attention and support from our dedicated team throughout your project.</p>
-                </div>
-            </div>
-            
+        <div class="cta-section">
             <div class="text-center">
-                <div class="guarantee-badge">
-                    <i class="fas fa-check"></i> 100% Satisfaction Guaranteed
-                </div>
+                <h3 class="cta-title outfit">Ready to Join Our Happy Customers?</h3>
+                <p class="roboto">Experience the JNK Printing Hub difference for your next printing project.</p>
+                <a href="#contact" class="btn btn-warning outfit">Get Started Today</a>
             </div>
         </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="container">
-            <h2 class="section-title">What Our Clients Say</h2>
-            <p class="section-subtitle">Don't just take our word for it. Here's what our satisfied customers have to say about our services.</p>
-            
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar">
-                                <img src="https://via.placeholder.com/60" alt="Client">
-                            </div>
-                            <div>
-                                <div class="testimonial-name">Geetha Muthiah</div>
-                                <div class="testimonial-role">Director, Chettinad Hari Shree Vidyalayam</div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
+    </div>
+</section>
+<!-- Contact Section -->
+<section class="contact-section" id="contact">
+    <div class="container">
+        <h2 class="section-title outfit blue-clr">Get In Touch</h2>
+        <p class="section-subtitle roboto">Ready to start your printing project? Contact us today for a free quote and consultation.</p>
+        <div class="row">
+            <div class="col-lg-5">
+                <h3 class="outfit pb-3">Contact Information</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <div class="contact-title outfit">Address</div>
+                            <p class="roboto">3/690 Lingapuram Colony, Sivakasi(East), Tamil Nadu -626189</p>
                         </div>
-                        <p class="testimonial-text">"We recently ordered our school diaries from JNK Printing Hub. The printing quality was excellent, with clear text and vibrant colors. The finish was professional, and we are very satisfied with the overall outcome."</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <div class="contact-title outfit">Phone</div>
+                            <p class="roboto">+91 96558 70027<br>+91 93606 06858</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <div class="contact-title outfit">Email</div>
+                            <p class="roboto">jnkprintinghub@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="far fa-clock"></i></div>
+                        <div>
+                            <div class="contact-title outfit">Business Hours</div>
+                            <p class="roboto">Monday - Saturday: 9:00 AM - 7:00 PM</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar">
-                                <img src="https://via.placeholder.com/60" alt="Client">
-                            </div>
-                            <div>
-                                <div class="testimonial-name">P Arunagiri</div>
-                                <div class="testimonial-role">Founder, Technicolab</div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="testimonial-text">"We got our product catalogues printed at JNK Printing Hub, and the quality was outstanding. The colors were vibrant, the paper felt premium, and the finishing was perfect. Our customers loved it!"</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar">
-                                <img src="https://via.placeholder.com/60" alt="Client">
-                            </div>
-                            <div>
-                                <div class="testimonial-name">Amit Patel</div>
-                                <div class="testimonial-role">Owner, Patel Restaurants</div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="testimonial-text">"From menu cards to packaging, JNK Printing Hub handles all our printing needs. Consistent quality and competitive prices make them our go-to printing partner."</p>
-                    </div>
-                </div>
-                
-                <div class="col-md-6">
-                    <div class="testimonial-card">
-                        <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
-                        <div class="testimonial-header">
-                            <div class="testimonial-avatar">
-                                <img src="https://via.placeholder.com/60" alt="Client">
-                            </div>
-                            <div>
-                                <div class="testimonial-name">Dr. Sunita Mehta</div>
-                                <div class="testimonial-role">Clinic Owner</div>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="testimonial-text">"Professional service and attention to detail. They created beautiful appointment cards and clinic brochures that perfectly represent our brand."</p>
+                <div>
+                    <h4 class="outfit">Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
-            
-            <div class="cta-section">
-                <div class="text-center">
-                    <h3 class="cta-title">Ready to Join Our Happy Customers?</h3>
-                    <p>Experience the JNK Printing Hub difference for your next printing project.</p>
-                    <a href="#" class="btn btn-primary">Get Started Today</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Ready to start your printing project? Contact us today for a free quote and consultation.</p>
-            
-            <div class="row">
-                <div class="col-lg-5">
-                    <h3>Contact Information</h3>
-                    
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-                            <div>
-                                <div class="contact-title">Address</div>
-                                <p>3/690 Lingapuram Colony, Sivakasi(East), Tamil Nadu -626189</p>
+            <div class="col-lg-7">
+                <div class="contact-form">
+                    <h3 class="outfit blue-clr pb-4">Send Us a Message</h3>
+                    <form>
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Full Name *</label>
+                            <input type="text" class="form-control" id="fullName" value="" placeholder="Your Name">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" class="form-control" id="email" placeholder="Your Email">
                             </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" placeholder="Your Mobile">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="service" class="form-label">Service Interested In</label>
+                            <select class="form-select" id="service">
+                                <option>Select a service</option>
+                                <option>Business Essentials</option>
+                                <option>Marketing Materials</option>
+                                <option>Corporate & Promotional Items</option>
+                                <option>School & College</option>
+                            </select>
+                        </div> 
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Tell us about your printing requirements..."></textarea>
                         </div>
                         
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                            <div>
-                                <div class="contact-title">Phone</div>
-                                <p>+91 96558 70027<br>+91 93606 06858</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <div>
-                                <div class="contact-title">Email</div>
-                                <p>jnktraders27@gmail.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon"><i class="far fa-clock"></i></div>
-                            <div>
-                                <div class="contact-title">Business Hours</div>
-                                <p>Monday - Saturday: 9:00 AM - 7:00 PM</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h4>Follow Us</h4>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        </div>
-                    </div>
-                    
-                    <div class="map-container">
-                        <img src="https://via.placeholder.com/400x200" alt="Map" class="img-fluid">
-                    </div>
-                </div>
-                
-                <div class="col-lg-7">
-                    <div class="contact-form">
-                        <h3>Send Us a Message</h3>
-                        <form>
-                            <div class="mb-3">
-                                <label for="fullName" class="form-label">Full Name *</label>
-                                <input type="text" class="form-control" id="fullName" value="J Naveen Kumar">
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="email" class="form-label">Email Address *</label>
-                                    <input type="email" class="form-control" id="email" value="jnktraders27@gmail.com">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone" value="9655870027">
-                                </div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="service" class="form-label">Service Interested In</label>
-                                <select class="form-select" id="service">
-                                    <option>Select a service</option>
-                                    <option>Business Essentials</option>
-                                    <option>Marketing Materials</option>
-                                    <option>Corporate & Promotional Items</option>
-                                    <option>School & College</option>
-                                </select>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Message *</label>
-                                <textarea class="form-control" id="message" rows="5" placeholder="Tell us about your printing requirements..."></textarea>
-                            </div>
-                            
-                            <button type="submit" class="btn btn-submit w-100">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
-                        </form>
-                    </div>
+                        <button type="submit" class="btn btn-submit w-100">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <h4 class="footer-title">JNK Printing Hub</h4>
-                    <p>Your trusted partner for all printing solutions. Quality, reliability, and customer satisfaction are our top priorities.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                
-                <div class="col-md-3">
-                    <h4 class="footer-title">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-md-3">
-                    <h4 class="footer-title">Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Business Printing</a></li>
-                        <li><a href="#">Marketing Materials</a></li>
-                        <li><a href="#">Corporate Gifts</a></li>
-                        <li><a href="#">Custom Printing</a></li>
-                        <li><a href="#">Packaging Solutions</a></li>
-                    </ul>
-                </div>
-                
-                <div class="col-md-3">
-                    <h4 class="footer-title">Contact Info</h4>
-                    <ul class="footer-links">
-                        <li><i class="fas fa-map-marker-alt me-2"></i>3/690 Lingapuram Colony, Sivakasi(East), Tamil Nadu -626189</li>
-                        <li><i class="fas fa-phone me-2"></i>+91 96558 70027</li>
-                        <li><i class="fas fa-envelope me-2"></i>jnktraders27@gmail.com</li>
-                    </ul>
+    </div>
+</section>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62969.99610827586!2d77.75142300597298!3d9.454264267236528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06cee43d812d0d%3A0x8ce12e9dcdaa2a2c!2sSivakasi%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1761671702371!5m2!1sen!2sin" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <h4 class="footer-title outfit">JNK Printing Hub</h4>
+                <p class="robot">Your trusted partner for all printing solutions. Quality, reliability, and customer satisfaction are our top priorities.</p>
+                <div class="footer-social roboto">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
             
-            <div class="footer-bottom">
-                <p>© 2024 JNK Printing Hub. All rights reserved.</p>
-                <div class="mt-2">
-                    <a href="#" class="me-3">Privacy Policy</a>
-                    <a href="#" class="me-3">Terms of Service</a>
-                    <a href="#">Sitemap</a>
-                </div>
+            <div class="col-md-3">
+                <h4 class="footer-title outfit">Quick Links</h4>
+                <ul class="footer-links roboto">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#whychoose">Why Choose Us</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#testimonial">Testimonial</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-md-3">
+                <h4 class="footer-title outfit">Services</h4>
+                <ul class="footer-links roboto">
+                    <li><a href="#">Business Printing</a></li>
+                    <li><a href="#">Marketing Materials</a></li>
+                    <li><a href="#">Corporate Gifts</a></li>
+                    <li><a href="#">Custom Printing</a></li>
+                    <li><a href="#">Packaging Solutions</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-md-3">
+                <h4 class="footer-title outfit">Contact Info</h4>
+                <ul class="footer-links roboto">
+                    <li><i class="fas fa-map-marker-alt me-2"></i>3/690 Lingapuram Colony, Sivakasi(East), Tamil Nadu -626189</li>
+                    <li><i class="fas fa-phone me-2"></i>+91 96558 70027</li>
+                    <li><i class="fas fa-envelope me-2"></i>jnkprintinghub@gmail.com</li>
+                </ul>
             </div>
         </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <div class="footer-bottom">
+            <p class="roboto yellow-clr">© 2024 JNK Printing Hub. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Smooth scrolling for anchor links
+    $('a[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+        var target = this.hash;
+        var $target = $(target);
+        
+        $('html, body').stop().animate({
+            'scrollTop': $target.offset().top - 70
+        }, 900, 'swing', function() {
+            window.location.hash = target;
+        });
+    });
     
-    <script>
-        // Smooth scrolling for anchor links
-        $('a[href^="#"]').on('click', function(e) {
-            e.preventDefault();
-            var target = this.hash;
-            var $target = $(target);
-            
-            $('html, body').stop().animate({
-                'scrollTop': $target.offset().top - 70
-            }, 900, 'swing', function() {
-                window.location.hash = target;
-            });
-        });
+    // Add active class to current page in navigation
+    $(document).ready(function() {
+        var path = window.location.pathname;
+        var page = path.split("/").pop();
         
-        // Add active class to current page in navigation
-        $(document).ready(function() {
-            var path = window.location.pathname;
-            var page = path.split("/").pop();
-            
-            if (page === "") page = "index.html";
-            
-            $('.nav-link').each(function() {
-                var linkPage = $(this).attr('href');
-                if (linkPage === page || (linkPage === "index.html" && page === "")) {
-                    $(this).addClass('active');
-                }
-            });
-        });
+        if (page === "") page = "index.html";
         
-        // Form validation
-        $('form').on('submit', function(e) {
-            e.preventDefault();
-            var isValid = true;
-            
-            // Check required fields
-            $(this).find('[required]').each(function() {
-                if ($(this).val().trim() === '') {
-                    isValid = false;
-                    $(this).addClass('is-invalid');
-                } else {
-                    $(this).removeClass('is-invalid');
-                }
-            });
-            
-            if (isValid) {
-                alert('Thank you for your message! We will get back to you soon.');
-                this.reset();
+        $('.nav-link').each(function() {
+            var linkPage = $(this).attr('href');
+            if (linkPage === page || (linkPage === "index.html" && page === "")) {
+                $(this).addClass('active');
+            }
+        });
+    });
+    
+    // Form validation
+    $('form').on('submit', function(e) {
+        e.preventDefault();
+        var isValid = true;
+        
+        // Check required fields
+        $(this).find('[required]').each(function() {
+            if ($(this).val().trim() === '') {
+                isValid = false;
+                $(this).addClass('is-invalid');
+            } else {
+                $(this).removeClass('is-invalid');
             }
         });
         
-        // Add animation on scroll
-        $(window).on('scroll', function() {
-            $('.feature-card, .why-choose-card, .testimonial-card').each(function() {
-                var elementTop = $(this).offset().top;
-                var elementBottom = elementTop + $(this).outerHeight();
-                var viewportTop = $(window).scrollTop();
-                var viewportBottom = viewportTop + $(window).height();
-                
-                if (elementBottom > viewportTop && elementTop < viewportBottom) {
-                    $(this).css('opacity', '1').css('transform', 'translateY(0)');
-                }
+        if (isValid) {
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        }
+    });
+    
+    // Add animation on scroll
+    $(window).on('scroll', function() {
+        $('.feature-card, .why-choose-card, .testimonial-card').each(function() {
+            var elementTop = $(this).offset().top;
+            var elementBottom = elementTop + $(this).outerHeight();
+            var viewportTop = $(window).scrollTop();
+            var viewportBottom = viewportTop + $(window).height();
+            
+            if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                $(this).css('opacity', '1').css('transform', 'translateY(0)');
+            }
+        });
+    });
+    
+    // Initialize elements with animations
+    $('.feature-card, .why-choose-card, .testimonial-card').css({
+        'opacity': '0',
+        'transform': 'translateY(30px)',
+        'transition': 'opacity 0.6s ease, transform 0.6s ease'
+    });
+    
+    // Trigger scroll event to initialize animations
+    $(window).trigger('scroll');
+</script>
+<script>
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                toggle: false
             });
+            bsCollapse.hide();
         });
-        
-        // Initialize elements with animations
-        $('.feature-card, .why-choose-card, .testimonial-card').css({
-            'opacity': '0',
-            'transform': 'translateY(30px)',
-            'transition': 'opacity 0.6s ease, transform 0.6s ease'
-        });
-        
-        // Trigger scroll event to initialize animations
-        $(window).trigger('scroll');
-    </script>
+    });
+</script>
 </body>
 </html>
