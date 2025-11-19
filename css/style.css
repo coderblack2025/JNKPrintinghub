@@ -37,7 +37,7 @@
 .hero-section {
     background-color: var(--primary-color);
     color: white;
-    padding: 7rem 0;
+    padding: 1rem 0;
 }
 .blue-clr{color:#0d4a7e;}
 .yellow-clr{color:#ffc107;}
@@ -460,6 +460,27 @@
     background-color: var(--accent-color);
     color: var(--dark-color);
 }
+.w0{width:0%;}
+.fixed{position:fixed; z-index:2;}
+.priceicn{width:50px;}
+.priceicn2 {width: 120px;}
+.point{bottom:10px; left:10px;}
+.point1{bottom:70px; left:10px;}
+.point2{bottom: 15px; right: 10px;}
+.blink{
+    -webkit-animation: blink 1s;
+	animation: blink 1s;
+    -webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;}
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}}
+@-webkit-keyframes blink {
+    0% {opacity: 1;}
+    50% { opacity: 0;}
+    100% {opacity: 1;}}
+
 
 @media (max-width: 768px) {
 .hero-title {font-size: 2rem;}
